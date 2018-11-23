@@ -20,6 +20,7 @@
     {!! Form::select('trans_type', ['Pemasukan' => 'Pemasukan', 'Pengeluaran' => 'Pengeluaran'], 'default', array('onchange' => 'getCategory(this)')) !!}
     <br>
     <strong>Category Transaction:</strong>
+    note : karena ajaxnya belum jadi, jadi masukin id categorynya dulu.
     <br>
     <div id="category_id"></div>
     {!! Form::text('category_id', null, array('placeholder' => 'category_id','class' => 'form-control')) !!}
