@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/getCategory', 'TransactionController@getCategory')->name('getCategory');
-Route::post('/transaction/filter/', 'TransactionController@filterDate')->name('transaction.filterDate');
+Route::get('/getCategory/{type}', 'TransactionController@getCategory')->name('getCategory');
+Route::get('/transaction/filter/', 'TransactionController@filterDate')->name('transaction.filterDate');
 Route::resource('category', 'CategoryController');
 Route::resource('transaction', 'TransactionController');
 Auth::routes();

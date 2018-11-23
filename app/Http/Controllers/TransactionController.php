@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Transaction;
 use App\Category;
-
+use App\User;
 class TransactionController extends Controller
 {
     public function __construct(){
@@ -29,7 +29,8 @@ class TransactionController extends Controller
     }
     public function getCategory($type){
         $categories = Category::where('type', $type);
-        return response()->json(array('categories'=> $categories), 200);
+        echo "cek";
+        return response()->json(array('categories'=> $type), 200);
     }
 
     public function create()
@@ -46,6 +47,13 @@ class TransactionController extends Controller
          ]);
         $request['user_id'] = auth()->user()->id;
          $transaction = Transaction::create($request->all());
+         $user=User::find(auth()->user()->id);
+         if ($request->input('trans_type')=="Pemasukan") {
+            $saldo=$user->saldo + $request->input('amount');
+         }else{
+            $saldo=$user->saldo - $request->input('amount');
+         }
+         $transaction = User::find((auth()->user()->id))->update(array('saldo' => $saldo));
          return redirect()->route('transaction.index')->with('success','transaction successfully added');
     }
 
