@@ -83,12 +83,6 @@
                 <div class="title m-b-md">
                     Go-NOTE
                 </div>
-
-                <div class="links">
-                    <a href="#">HOME</a>
-                    <a href="">CATEGORY</a>
-                    <a href="">TRANSACTION</a>
-                </div>
             </div>
         </div>
     </body>
